@@ -1,0 +1,16 @@
+adults = 0
+children = 1
+
+count = 1
+newadults = 0
+
+n =   #insert the number of months from the data it gives you
+k =   # number of babies each pair produce after each mate
+
+while (count < n):
+    newadults = adults + children
+    children = adults * k
+    adults = newadults
+    count = count + 1
+
+print(adults + children)
