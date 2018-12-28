@@ -1,0 +1,6 @@
+# copy and paste the data as a in ''
+
+a=''
+for i in a:
+     if i == 'T':
+            print(a.replace('T','U'))
