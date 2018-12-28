@@ -1,0 +1,9 @@
+#copy and paste s:
+s=''
+#copy and paste t:
+t=''
+mismatch=0
+for i in range(len(s)):
+    if s[i]!=t[i]:
+        mismatch+=1
+print(mismatch)
