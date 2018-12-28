@@ -1,0 +1,16 @@
+#if we copy and paste the data in '' as a , the last line printed is the correct answer
+# the problem of this code is that it prints each step not just the final answer which may take more time
+
+a = ''
+b = []
+for i in a:
+    if i == 'T':
+        b.append('A')
+    if i == 'A':
+        b.append('T')
+    if i == 'G':
+        b.append('C')
+    if i == 'C':
+        b.append('G')
+        
+    print("".join(str(x) for x in b[::-1]))
