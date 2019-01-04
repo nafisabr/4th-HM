@@ -1,7 +1,6 @@
 # simply copy the data and paste it inside '' of a
 
 a=''
-
 A = a.count('A')
 C = a.count('C')
 G = a.count('G')
