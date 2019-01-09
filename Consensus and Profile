@@ -1,0 +1,39 @@
+from Bio import SeqIO
+from collections import defaultdict
+sequences = []
+handle = open('C:/Users/nafisa/Desktop/rosalind_cons.txt', 'r')
+for record in SeqIO.parse(handle, 'fasta'):
+     sequence = []
+     for nt in record.seq:
+          sequence.extend(nt)
+     sequences.append(sequence)
+handle.close()
+
+profile = [[0]*len(sequences)]*4
+
+counter=[]
+consensus=''
+for i in range(len(sequences[0])):
+    counter.append(defaultdict(int))
+    for seq in sequences:
+        counter[i][seq[i]] += 1
+    consensus += max(counter[i], key=counter[i].get)
+print(consensus)
+
+import numpy
+profile = numpy.zeros((4, len(sequences[0])), dtype=numpy.int)
+for i,line in enumerate(sequences):
+     for j, nt in enumerate(line):
+          if nt == 'A':
+               profile[0][j] += 1
+          elif nt == 'C':
+               profile[1][j] += 1
+          elif nt == 'G':
+               profile[2][j] += 1
+          elif nt == 'T':
+               profile[3][j] += 1
+
+print('A: ' + ' '.join(str(e) for e in profile[0]))
+print('C: ' + ' '.join(str(e) for e in profile[1]))
+print('G: ' + ' '.join(str(e) for e in profile[2]))
+print('T: ' + ' '.join(str(e) for e in profile[3]))
