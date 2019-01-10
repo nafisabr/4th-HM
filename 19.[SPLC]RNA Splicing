@@ -1,0 +1,23 @@
+from Bio.Seq import Seq
+seq_list=[]
+seq=''
+with open("C:/Users/hp/Desktop/rosalind_splc (1).txt") as infile:
+    for line in infile:
+        if line[0] == '>':
+            if seq != '':
+                seq_list.append(seq)
+                seq = ''
+            continue
+        else:
+            seq = seq + line.strip()
+    seq_list.append(seq)
+
+print(seq_list)
+for i in range(1,len(seq_list)):
+        seq_list[0]=seq_list[0].replace(seq_list[i],'')
+print(seq_list)
+seq_list[0]=seq_list[0].replace('T','U')
+
+print(seq_list)
+dna=seq_list[0]
+print(str(Seq(dna).translate()).replace("*","").strip())
