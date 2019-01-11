@@ -1,0 +1,19 @@
+from itertools import product
+
+k=
+m=
+n=
+
+
+population = (['AA'] * k) + (['Aa'] * m) + (['aa'] * n)
+
+all_children = []
+for parent1 in population:
+    chosen = population[:]
+    chosen.remove(parent1)
+    for parent2 in chosen:
+        children = product(parent1, parent2)
+        all_children.extend([''.join(c) for c in children])
+
+dominants = filter(lambda c: 'A' in c, all_children)
+print (float(len(list(dominants))) / len(all_children))
