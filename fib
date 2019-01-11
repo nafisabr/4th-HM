@@ -1,0 +1,11 @@
+def fibonacci(m):
+    F0 = 0
+    F1 = 1
+    if m == 0:
+        return F0
+    elif m == 1:
+        return F1
+    else:
+        return fibonacci(m-1)+fibonacci(m-2)
+
+print(fibonacci(22))
