@@ -1,0 +1,24 @@
+from Bio import SeqIO
+sequences = []
+handle = open('C:/Users/hp/Desktop/rosalind_lcsm (2).txt', 'r')
+for record in SeqIO.parse(handle, 'fasta'):
+    sequence = []
+    seq = ''
+    for nt in record.seq:
+        seq += nt
+    sequences.append(seq)
+handle.close()
+
+seqs = sorted(sequences)
+
+
+
+motif = ''
+for start in range(len(seqs[0])):
+    for ending in range(len(min(seqs))):
+        part = seqs[0][start:start+ending+1]
+        if all(part in s for s in seqs) and len(motif)<len(part):
+            motif = part
+print(motif)
+
+
