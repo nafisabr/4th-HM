@@ -1,0 +1,26 @@
+seq_list = []
+seq = ''
+with open("C:/Users/hp/Desktop/rosalind_sseq.txt") as infile:
+    for line in infile:
+        if line[0] == '>':
+            if seq != '':
+                seq_list.append(seq)
+                seq = ''
+            continue
+        else:
+            seq = seq + line.strip()
+    seq_list.append(seq)
+
+print(seq_list)
+s = seq_list[0]
+t = seq_list[1]
+print(s)
+print(t)
+a=[]
+i = j = 0
+while i < len(s) and j < len(t):
+    if s[i] == t[j]:
+        a.append(i + 1)
+        j += 1
+    i += 1
+print(' '.join(map(str, a)))
